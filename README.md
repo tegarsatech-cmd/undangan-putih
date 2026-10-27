@@ -13,7 +13,7 @@ Website undangan pernikahan digital satu halaman (*single-page*) dengan pendekat
 - **Jadwal Acara & Google Maps**: Kartu Akad Nikah & Resepsi dengan peta lokasi interaktif.
 - **Galeri Foto**: Grid foto ganda dengan fitur *Lightbox modal preview*.
 - **Amplop Digital**: Desain kartu ATM BCA & E-Wallet DANA realistis dengan tombol *Copy No. Rekening* dan notifikasi toast.
-- **RSVP & Buku Tamu**: Indikator statistik kehadiran dinamis (*Hadir* / *Tidak Hadir*) dan formulir ucapan yang tersimpan secara lokal.
+- **Ucapan Terima Kasih & Penutup**: Ungkapan rasa syukur dan doa restu yang tulus kepada para tamu undangan dan keluarga besar.
 - **Floating Navigation Bar**: Menu navigasi melayang di bagian bawah layar.
 - **Pemutar Musik**: Piringan audio melayang untuk memutar lagu latar romantis.
 
