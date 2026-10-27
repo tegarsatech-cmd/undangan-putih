@@ -3,6 +3,29 @@
  * Adiba & Habib - 28 Desember 2025
  */
 
+// =============================================================================
+// ⚙️ [PENGATURAN UTAMA] UBAH LAGU, TANGGAL COUNTDOWN, & KALENDER DI SINI
+// =============================================================================
+const WEDDING_CONFIG = {
+  // 🎵 [UBAH LAGU / MUSIK]
+  // Masukkan file audio mp3 Anda (misal: 'assets/music/lagu_pernikahan.mp3' atau tautan online).
+  // Jika dibiarkan kosong (''), sistem otomatis memutar melodi romantis instrumen bawaan.
+  musicUrl: '',
+
+  // ⏳ [UBAH TANGGAL HITUNG MUNDUR / COUNTDOWN]
+  // Format: 'YYYY-MM-DDTHH:mm:ss+07:00' (WIB)
+  weddingDate: '2025-12-28T10:00:00+07:00',
+
+  // 📅 [UBAH DATA GOOGLE CALENDAR (SAVE THE DATE)]
+  calendar: {
+    title: 'Pernikahan Adiba & Habib',
+    details: 'Akad & Resepsi Pernikahan Adiba Putri Syakila & Habib Yulianto',
+    location: 'Ballroom Grand Rama & Graha Sabha, Yogyakarta',
+    dates: '20251228T030000Z/20251228T080000Z'
+  }
+};
+// =============================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Parse Guest Name from URL Parameter (?to=Nama+Tamu)
   const urlParams = new URLSearchParams(window.location.search);
@@ -13,21 +36,28 @@ document.addEventListener('DOMContentLoaded', () => {
   if (guestNameEl) {
     guestNameEl.textContent = guestDisplay;
   }
-  
-  const guestNameHero = document.getElementById('guest-name-hero');
-  if (guestNameHero) {
-    guestNameHero.textContent = guestDisplay;
-  }
 
-  // 2. Audio Background (Web Audio & HTML5 Audio fallback)
+  // 2. Audio Background (Custom MP3 Audio with Web Audio Synth Fallback)
   let isPlaying = false;
   const musicBtn = document.getElementById('music-toggle');
   const musicIcon = document.getElementById('music-icon');
+  let audioEl = null;
   let audioContext = null;
   let synthInterval = null;
 
+  // Initialize custom audio if URL is provided
+  if (WEDDING_CONFIG.musicUrl && WEDDING_CONFIG.musicUrl.trim() !== '') {
+    audioEl = new Audio(WEDDING_CONFIG.musicUrl);
+    audioEl.loop = true;
+  }
+
   // Soft romantic synthesized harp/piano melody fallback using Web Audio API
   function playRomanticMelody() {
+    if (audioEl) {
+      audioEl.play().catch(e => console.log('Audio playback notice:', e));
+      return;
+    }
+
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!audioContext) {
@@ -79,6 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function stopRomanticMelody() {
+    if (audioEl) {
+      audioEl.pause();
+    }
     if (synthInterval) clearInterval(synthInterval);
     if (audioContext && audioContext.state === 'running') {
       audioContext.suspend();
@@ -118,9 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Countdown Timer to Wedding Day (28 Desember 2025)
-  // Smart target date calculation
-  const targetDate = new Date('2025-12-28T10:00:00+07:00').getTime();
+  // 4. Countdown Timer to Wedding Day
+  const targetDate = new Date(WEDDING_CONFIG.weddingDate).getTime();
   
   function updateCountdown() {
     const now = new Date().getTime();
@@ -184,10 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const saveDateBtn = document.getElementById('btn-save-date');
   if (saveDateBtn) {
     saveDateBtn.addEventListener('click', () => {
-      const title = encodeURIComponent("Pernikahan Adiba & Habib");
-      const details = encodeURIComponent("Akad & Resepsi Pernikahan Adiba Putri Syakila & Habib Yulianto");
-      const location = encodeURIComponent("Grand Rama Ballroom & Graha Sabha, Yogyakarta");
-      const dates = "20251228T030000Z/20251228T080000Z";
+      const cal = WEDDING_CONFIG.calendar;
+      const title = encodeURIComponent(cal.title);
+      const details = encodeURIComponent(cal.details);
+      const location = encodeURIComponent(cal.location);
+      const dates = cal.dates;
       const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
       window.open(gcalUrl, '_blank');
       showToast('Membuka Google Calendar...');
@@ -217,9 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
-
-  // 9. Scroll Reveal Animations (IntersectionObserver)
+  // 8. Scroll Reveal Animations (IntersectionObserver)
   const revealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -234,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => observer.observe(el));
 
-  // 10. Floating Nav Active Indicator on Scroll
+  // 9. Floating Nav Active Indicator on Scroll
   const sections = document.querySelectorAll('section[id]');
   const navItems = document.querySelectorAll('.nav-item');
 
