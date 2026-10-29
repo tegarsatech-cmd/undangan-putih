@@ -5,7 +5,7 @@ Website undangan pernikahan digital satu halaman (*single-page*) dengan pendekat
 ## ✨ Fitur Utama
 
 - **Layar Pembuka (Opening Envelope Modal)**: Menyapa nama tamu secara personal via parameter URL (`?to=Nama+Tamu`).
-- **Cover / Hero Section**: Foto pasangan berbingkai *arch*, tipografi mewah, dan tombol *Save The Date* terintegrasi Google Calendar.
+- **Cover / Hero Section**: Foto pasangan berbingkai *arch*, tipografi mewah, dan tanggal acara pernikahan.
 - **Profil Mempelai (Bride & Groom)**: Divider pita bertuliskan Bride & Groom berikon gunungan, foto mempelai, nama orang tua, dan ikon sosial media.
 - **Kutipan Suci**: QS. An-Nur: 32 dengan kaligrafi dan layout terpusat.
 - **Love Story**: Foto pasangan dan timeline vertikal perjalanan cinta (*Awal Cerita* & *Lamaran*).
