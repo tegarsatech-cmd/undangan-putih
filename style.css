@@ -1,4 +1,4 @@
-/* Custom Styling & Aesthetics for Adiba & Habib Wedding Invitation */
+/* Custom Styling & Aesthetics for Wais & Lulu Wedding Invitation */
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -229,6 +229,40 @@ body {
 }
 
 /* ATM & E-Wallet Cards */
+.atm-card-bni {
+  background: linear-gradient(135deg, #005E6A 0%, #00363D 100%);
+  color: #FFFFFF;
+  border-radius: 18px;
+  box-shadow: 0 14px 30px rgba(0, 94, 106, 0.35);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.atm-card-bni::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(241, 90, 36, 0.35) 0%, rgba(241, 90, 36, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.atm-card-bni::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -20px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
 .atm-card-bca {
   background: linear-gradient(135deg, #0d3b66 0%, #001f3f 100%);
   color: #FFFFFF;

@@ -1,6 +1,6 @@
 /**
  * Wedding Invitation Application Script
- * Adiba & Habib - 28 Desember 2025
+ * Wais & Lulu - 14 Maret 2027
  */
 
 // =============================================================================
@@ -14,14 +14,14 @@ const WEDDING_CONFIG = {
 
   // ⏳ [UBAH TANGGAL HITUNG MUNDUR / COUNTDOWN]
   // Format: 'YYYY-MM-DDTHH:mm:ss+07:00' (WIB)
-  weddingDate: '2025-12-28T10:00:00+07:00',
+  weddingDate: '2027-03-14T09:00:00+07:00',
 
   // 📅 [UBAH DATA GOOGLE CALENDAR (SAVE THE DATE)]
   calendar: {
-    title: 'Pernikahan Adiba & Habib',
-    details: 'Akad & Resepsi Pernikahan Adiba Putri Syakila & Habib Yulianto',
-    location: 'Ballroom Grand Rama & Graha Sabha, Yogyakarta',
-    dates: '20251228T030000Z/20251228T080000Z'
+    title: 'Pernikahan Wais & Lulu',
+    details: 'Akad & Resepsi Pernikahan Wais Alqorni & Lulu Deviyanti',
+    location: 'Kediaman Mempelai Putri, Ds. Kedungjaran Dusun 3, RT.10 RW.05, Kec. Sragi, Kab. Pekalongan, Jawa Tengah 51155',
+    dates: '20270314T020000Z/20270314T100000Z'
   }
 };
 // =============================================================================
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const guestNameParam = urlParams.get('to') || urlParams.get('p') || urlParams.get('guest');
   const guestDisplay = guestNameParam ? decodeURIComponent(guestNameParam) : 'Tamu Undangan';
-  
+
   const guestNameEl = document.getElementById('guest-name');
   if (guestNameEl) {
     guestNameEl.textContent = guestDisplay;
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isPlaying || !audioContext) return;
         const osc = audioContext.createOscillator();
         const gain = audioContext.createGain();
-        
+
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(freq, audioContext.currentTime);
 
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Opening Invitation Modal Transition
   const openModal = document.getElementById('opening-modal');
   const openBtn = document.getElementById('btn-open-invitation');
-  
+
   if (openBtn && openModal) {
     openBtn.addEventListener('click', () => {
       openModal.classList.add('opened');
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Countdown Timer to Wedding Day
   const targetDate = new Date(WEDDING_CONFIG.weddingDate).getTime();
-  
+
   function updateCountdown() {
     const now = new Date().getTime();
     let diff = targetDate - now;
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   // 5. Toast Notification & Copy to Clipboard
-  window.copyText = function(text, label) {
+  window.copyText = function (text, label) {
     navigator.clipboard.writeText(text).then(() => {
       showToast(`${label || 'Teks'} berhasil disalin!`);
     }).catch(err => {
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
 
-  window.openLightbox = function(src) {
+  window.openLightbox = function (src) {
     if (lightboxModal && lightboxImg) {
       lightboxImg.src = src;
       lightboxModal.classList.add('active');
